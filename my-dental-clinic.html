@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>My Dental Clinic — Dr. Vishal | Surat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --cream:    #faf8f5;
+  --cream2:   #f3ede4;
+  --ivory:    #fffdf9;
+  --gold:     #b8935a;
+  --gold-lt:  #f5ede0;
+  --teal:     #1a6b6b;
+  --teal-lt:  #e6f2f2;
+  --teal-mid: #2a8a8a;
+  --navy:     #0d1f2d;
+  --navy-mid: #1e3a4a;
+  --ink:      #2c3e50;
+  --mid:      #5a7080;
+  --soft:     #8fa3b0;
+  --border:   #e8ddd0;
+  --border2:  #dde8e8;
+  --white:    #ffffff;
+  --shadow:    0 2px 20px rgba(13,31,45,.06);
+  --shadow-md: 0 8px 40px rgba(13,31,45,.10);
+  --shadow-lg: 0 20px 60px rgba(13,31,45,.14);
+  --r:        14px;
+  --t:        0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─────────────────────────────────────────
+   RESET
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink);
+  background: var(--ivory);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.2; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ─────────────────────────────────────────
+   LAYOUT HELPERS
+───────────────────────────────────────── */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+section { padding: 100px 0; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 18px;
+}
+.tag::before {
+  content: '';
+  display: block;
+  width: 28px; height: 1.5px;
+  background: var(--teal);
+  border-radius: 2px;
+}
+.tag.light { color: rgba(255,255,255,.55); }
+.tag.light::before { background: rgba(255,255,255,.4); }
+.tag.gold { color: var(--gold); }
+.tag.gold::before { background: var(--gold); }
+
+.h2 {
+  font-size: clamp(2rem, 3.8vw, 2.9rem);
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 14px;
+  letter-spacing: -.01em;
+}
+.h2 em { font-style: italic; color: var(--teal); }
+.h2.light { color: #fff; }
+.sub {
+  font-size: 1rem;
+  color: var(--mid);
+  font-weight: 300;
+  max-width: 480px;
+  line-height: 1.75;
+}
+.sub.light { color: rgba(255,255,255,.5); }
+.cx { text-align: center; }
+.cx .sub { margin: 0 auto; }
+
+/* ─────────────────────────────────────────
+   SCROLL ANIMATIONS
+───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.show { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .1s; }
+.reveal.d2 { transition-delay: .2s; }
+.reveal.d3 { transition-delay: .3s; }
+.reveal.d4 { transition-delay: .4s; }
+.reveal.d5 { transition-delay: .5s; }
+.reveal.d6 { transition-delay: .6s; }
+
+/* ─────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  cursor: pointer;
+  border: none;
+  transition: var(--t);
+}
+.btn-dark {
+  background: var(--navy);
+  color: #fff;
+}
+.btn-dark:hover {
+  background: var(--navy-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13,31,45,.22);
+}
+.btn-teal {
+  background: var(--teal);
+  color: #fff;
+}
+.btn-teal:hover {
+  background: var(--teal-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,107,107,.28);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.btn-wa {
+  background: #22c55e;
+  color: #fff;
+}
+.btn-wa:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(34,197,94,.3);
+}
+.btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 22px 0;
+  transition: var(--t);
+}
+#nav.scrolled {
+  background: rgba(255,253,249,.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 14px 0;
+  box-shadow: 0 1px 0 var(--border), var(--shadow);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* Logo */
+.nav-logo { display: flex; align-items: center; gap: 11px; }
+.nav-logo-mark {
+  width: 40px; height: 40px;
+  border: 1.5px solid var(--teal);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.nav-logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+.nav-logo-text { line-height: 1.2; }
+.nav-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: .01em;
+}
+.nav-logo-sub {
+  font-size: .68rem;
+  font-weight: 500;
+  color: var(--teal);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+/* Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+.nav-links a {
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--mid);
+  letter-spacing: .02em;
+  transition: color var(--t);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--teal);
+  transition: width var(--t);
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links .nav-cta {
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: .82rem;
+  letter-spacing: .04em;
+}
+.nav-links .nav-cta::after { display: none; }
+.nav-links .nav-cta:hover { background: var(--teal); color: #fff; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--navy); transition: var(--t); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+/* subtle grain texture overlay */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none;
+  opacity: .4;
+}
+/* decorative arcs */
+#hero::after {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  border: 1px solid rgba(26,107,107,.1);
+  top: -200px; right: -150px;
+  pointer-events: none;
+}
+.hero-arc2 {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  border: 1px solid rgba(184,147,90,.1);
+  bottom: -180px; left: -100px;
+  pointer-events: none;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* Hero Left */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.hero-line { width: 36px; height: 1px; background: var(--gold); }
+.hero-eyebrow-text {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero-h1 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.12;
+  margin-bottom: 22px;
+  letter-spacing: -.02em;
+}
+.hero-h1 em { font-style: italic; color: var(--teal); }
+
+.hero-p {
+  font-size: 1rem;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 38px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+
+.hero-divider { width: 1px; height: 42px; background: var(--border); }
+.hero-stats { display: flex; align-items: center; gap: 28px; }
+.hstat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1;
+}
+.hstat-num sup { font-size: .7em; color: var(--teal); }
+.hstat-lbl { font-size: .75rem; color: var(--soft); margin-top: 3px; letter-spacing: .04em; }
+
+/* Hero Right */
+.hero-visual { position: relative; }
+.hero-img-main {
+  width: 100%;
+  height: 580px;
+  object-fit: cover;
+  border-radius: 20px 20px 80px 20px;
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
+
+/* Floating cards on hero */
+.hcard {
+  position: absolute;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hcard.c1 { bottom: 36px; left: -28px; }
+.hcard.c2 { top: 36px; right: -28px; }
+.hcard-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hcard-icon img { width: 100%; height: 100%; object-fit: cover; }
+.hcard-icon.teal-bg { background: var(--teal-lt); display: flex; align-items: center; justify-content: center; }
+.hcard-icon.gold-bg { background: var(--gold-lt); display: flex; align-items: center; justify-content: center; }
+.hcard-icon svg { width: 20px; height: 20px; stroke: var(--teal); fill: none; stroke-width: 1.6; }
+.hcard-icon.gold-bg svg { stroke: var(--gold); }
+.hcard-title { font-size: .85rem; font-weight: 600; color: var(--navy); }
+.hcard-sub { font-size: .73rem; color: var(--soft); margin-top: 2px; }
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+#services { background: var(--ivory); }
+.services-head { margin-bottom: 56px; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.svc {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: var(--t);
+  cursor: default;
+}
+.svc:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border2);
+}
+.svc-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+.svc:hover .svc-img { transform: scale(1.03); }
+.svc-body { padding: 22px 22px 24px; }
+.svc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--teal);
+  letter-spacing: .12em;
+  margin-bottom: 8px;
+}
+.svc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+.svc-desc { font-size: .85rem; color: var(--mid); font-weight: 300; line-height: 1.65; }
+
+/* ─────────────────────────────────────────
+   ABOUT  (Doctor section)
+───────────────────────────────────────── */
+#about { background: var(--cream); overflow: hidden; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about-img-col { position: relative; }
+.about-img-main {
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 80px 20px 20px 20px;
+  box-shadow: var(--shadow-lg);
+}
+.about-badge {
+  position: absolute;
+  bottom: 36px; right: -24px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.about-badge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.about-badge-label { font-size: .73rem; color: rgba(255,255,255,.55); letter-spacing: .08em; margin-top: 4px; }
+
+.about-text-col {}
+.about-body {
+  font-size: .97rem;
+  color: var(--mid);
+  font-weight: 300;
+  line-height: 1.85;
+  margin: 18px 0 30px;
+}
+
+/* Doctor name card */
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 30px;
+}
+.doc-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  flex-shrink: 0;
+  border: 2px solid var(--border2);
+}
+.doc-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.doc-role { font-size: .78rem; color: var(--teal); font-weight: 500; letter-spacing: .06em; }
+
+.about-features { display: flex; flex-direction: column; gap: 14px; }
+.about-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: .9rem;
+  color: var(--ink);
+}
+.feat-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--teal-lt);
+  border: 1.5px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.feat-dot svg { width: 11px; height: 11px; stroke: var(--teal); fill: none; stroke-width: 3; }
+.feat-label { font-weight: 500; color: var(--navy); }
+.feat-sub { font-size: .82rem; color: var(--soft); font-weight: 300; margin-top: 1px; }
+
+/* ─────────────────────────────────────────
+   WHY CHOOSE US
+───────────────────────────────────────── */
+#why {
+  background: var(--navy);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+}
+#why::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,107,107,.18) 0%, transparent 70%);
+  top: -250px; right: -100px;
+  pointer-events: none;
+}
+.why-head { margin-bottom: 52px; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.why-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r);
+  padding: 32px 24px;
+  transition: var(--t);
+}
+.why-card:hover {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(26,107,107,.35);
+  transform: translateY(-4px);
+}
+.why-icon {
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.why-icon svg { width: 22px; height: 22px; stroke: rgba(255,255,255,.65); fill: none; stroke-width: 1.5; }
+.why-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.why-text { font-size: .84rem; color: rgba(255,255,255,.42); line-height: 1.65; font-weight: 300; }
+
+/* ─────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────── */
+#testimonials { background: var(--cream); }
+.test-head { margin-bottom: 52px; }
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.tcard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 30px 26px;
+  transition: var(--t);
+  position: relative;
+}
+.tcard:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.tcard::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem;
+  color: rgba(26,107,107,.1);
+  position: absolute;
+  top: 12px; right: 20px;
+  line-height: 1;
+}
+.tcard-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.tcard-stars svg { width: 14px; height: 14px; fill: var(--gold); stroke: none; }
+.tcard-text { font-size: .9rem; color: var(--mid); line-height: 1.75; font-weight: 300; margin-bottom: 22px; }
+.tcard-foot { display: flex; align-items: center; gap: 12px; }
+.tcard-av {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+}
+.tcard-name { font-size: .88rem; font-weight: 600; color: var(--navy); }
+.tcard-city { font-size: .75rem; color: var(--soft); }
+
+/* ─────────────────────────────────────────
+   APPOINTMENT
+───────────────────────────────────────── */
+#appointment {
+  background: linear-gradient(150deg, var(--navy-mid) 0%, var(--navy) 100%);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+}
+#appointment::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(26,107,107,.2) 0%, transparent 70%);
+  bottom: -200px; right: -100px;
+  pointer-events: none;
+}
+.appt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.appt-l {}
+.appt-l .sub { margin-top: 12px; }
+.appt-meta { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+.appt-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .88rem;
+  color: rgba(255,255,255,.55);
+  font-weight: 300;
+}
+.appt-row svg { width: 16px; height: 16px; stroke: rgba(255,255,255,.35); fill: none; stroke-width: 1.6; flex-shrink: 0; }
+
+.appt-form-box {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  padding: 40px 36px;
+  backdrop-filter: blur(8px);
+}
+.fld { margin-bottom: 20px; }
+.flabel {
+  display: block;
+  font-size: .73rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.finput {
+  width: 100%;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 8px;
+  padding: 13px 16px;
+  color: #fff;
+  font-size: .92rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  outline: none;
+  transition: border-color var(--t);
+}
+.finput::placeholder { color: rgba(255,255,255,.25); }
+.finput:focus { border-color: rgba(26,107,107,.6); background: rgba(255,255,255,.09); }
+select.finput option { background: var(--navy); color: #fff; }
+.btn-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 20px;
+  font-size: .92rem;
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  letter-spacing: .03em;
+  transition: var(--t);
+  margin-top: 4px;
+}
+.btn-submit:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(34,197,94,.3); }
+.btn-submit svg { width: 18px; height: 18px; fill: white; stroke: none; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+#contact { background: var(--ivory); }
+.contact-head { margin-bottom: 52px; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 40px;
+  align-items: start;
+}
+.info-cards { display: flex; flex-direction: column; gap: 16px; }
+.icard {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 22px 20px;
+  transition: var(--t);
+}
+.icard:hover { box-shadow: var(--shadow); transform: translateX(3px); }
+.icard-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: var(--teal-lt);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.icard-icon svg { width: 18px; height: 18px; stroke: var(--teal); fill: none; stroke-width: 1.6; }
+.icard-lbl { font-size: .7rem; font-weight: 600; color: var(--soft); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 4px; }
+.icard-val { font-size: .93rem; font-weight: 500; color: var(--navy); }
+.icard-sub { font-size: .8rem; color: var(--soft); font-weight: 300; margin-top: 2px; }
+.map-box {
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.map-box iframe { width: 100%; height: 360px; border: none; display: block; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+#footer { background: var(--navy); padding: 56px 0 28px; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 44px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.foot-brand {}
+.foot-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.foot-logo-mark {
+  width: 36px; height: 36px;
+  border: 1px solid var(--teal);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.foot-logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+.foot-logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+}
+.foot-tagline { font-size: .83rem; color: rgba(255,255,255,.32); font-weight: 300; line-height: 1.7; max-width: 220px; }
+.foot-col-title { font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.3); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+.foot-links { display: flex; flex-direction: column; gap: 10px; }
+.foot-links a { font-size: .86rem; color: rgba(255,255,255,.35); font-weight: 300; transition: color var(--t); }
+.foot-links a:hover { color: rgba(255,255,255,.7); }
+.foot-bottom {
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .78rem;
+  color: rgba(255,255,255,.2);
+}
+
+/* ─────────────────────────────────────────
+   FLOATING WA BUTTON
+───────────────────────────────────────── */
+#wa-float {
+  position: fixed;
+  bottom: 26px; right: 26px;
+  z-index: 999;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,.45);
+  text-decoration: none;
+  transition: var(--t);
+}
+#wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,.55); }
+#wa-float svg { width: 26px; height: 26px; fill: white; }
+.wa-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,.35);
+  animation: ring 2.5s ease infinite;
+}
+@keyframes ring { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.6);opacity:0} }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 1020px) {
+  .hero-grid, .about-grid, .appt-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { max-width: 520px; margin: 0 auto; }
+  .hcard.c1 { left: 0; }
+  .hcard.c2 { right: 0; }
+  .about-img-main { height: 420px; }
+  .about-badge { right: 0; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .test-grid { grid-template-columns: repeat(2, 1fr); }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  section { padding: 72px 0; }
+  .wrap { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(255,253,249,.98);
+    backdrop-filter: blur(16px);
+    padding: 30px 24px;
+    gap: 20px;
+    box-shadow: var(--shadow-md);
+    z-index: 900;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links.open a { font-size: 1rem; color: var(--ink); }
+  .nav-links.open a::after { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .test-grid { grid-template-columns: 1fr; }
+  .foot-top { grid-template-columns: 1fr; gap: 28px; }
+  .foot-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .appt-form-box { padding: 28px 22px; }
+  .hero-h1 { font-size: 2.4rem; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">
+          <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=80&q=80&fit=crop" alt="Clinic">
+        </div>
+        <div class="nav-logo-text">
+          <div class="nav-logo-name">My Dental Clinic</div>
+          <div class="nav-logo-sub">Dr. Vishal · Surat</div>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#appointment" class="nav-cta">Book Appointment</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero">
+  <div class="hero-arc2"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <!-- Left text -->
+      <div class="reveal">
+        <div class="hero-eyebrow">
+          <div class="hero-line"></div>
+          <span class="hero-eyebrow-text">Trusted Dental Care · Surat</span>
+        </div>
+        <h1 class="hero-h1">
+          Advanced Dental<br><em>Care in Surat</em>
+        </h1>
+        <p class="hero-p">Modern, pain-free dental treatments delivered with precision and genuine care — for every member of your family.</p>
+        <div class="hero-actions">
+          <a href="#appointment" class="btn btn-dark">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book Appointment
+          </a>
+          <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20dental%20appointment" target="_blank" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hstat-num">10<sup>+</sup></div>
+            <div class="hstat-lbl">Years Experience</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div>
+            <div class="hstat-num">5K<sup>+</sup></div>
+            <div class="hstat-lbl">Happy Patients</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div>
+            <div class="hstat-num">15<sup>+</sup></div>
+            <div class="hstat-lbl">Treatments</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right image -->
+      <div class="hero-visual reveal d2">
+        <img
+          src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=85&fit=crop"
+          alt="My Dental Clinic interior"
+          class="hero-img-main"
+        />
+        <div class="hcard c1">
+          <div class="hcard-icon teal-bg">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div>
+            <div class="hcard-title">Pain-Free Treatment</div>
+            <div class="hcard-sub">Advanced anaesthesia</div>
+          </div>
+        </div>
+        <div class="hcard c2">
+          <div class="hcard-icon gold-bg">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="hcard-title">5-Star Rated Clinic</div>
+            <div class="hcard-sub">500+ Google reviews</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section id="services">
+  <div class="wrap">
+    <div class="services-head cx reveal">
+      <div class="tag">Our Services</div>
+      <h2 class="h2">Treatments We <em>Specialise In</em></h2>
+      <p class="sub">From routine check-ups to complete smile transformations — all under one roof.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="svc reveal d1">
+        <img src="https://images.unsplash.com/photo-1581585108684-a48fb6ab7c57?w=600&q=80&fit=crop" alt="Teeth Whitening" class="svc-img"/>
+        <div class="svc-body">
+          <div class="svc-num">01</div>
+          <div class="svc-name">Teeth Whitening</div>
+          <p class="svc-desc">Professional whitening that brightens your smile several shades in a single session.</p>
+        </div>
+      </div>
+
+      <div class="svc reveal d2">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80&fit=crop" alt="Dental Implants" class="svc-img"/>
+        <div class="svc-body">
+          <div class="svc-num">02</div>
+          <div class="svc-name">Dental Implants</div>
+          <p class="svc-desc">Permanent titanium tooth replacements that look, feel, and function naturally.</p>
+        </div>
+      </div>
+
+      <div class="svc reveal d3">
+        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80&fit=crop" alt="Root Canal" class="svc-img"/>
+        <div class="svc-body">
+          <div class="svc-num">03</div>
+          <div class="svc-name">Root Canal</div>
+          <p class="svc-desc">Gentle, precise root canal procedures — completely painless with modern techniques.</p>
+        </div>
+      </div>
+
+      <div class="svc reveal d4">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffed71e9e06?w=600&q=80&fit=crop" alt="Braces and Aligners" class="svc-img"/>
+        <div class="svc-body">
+          <div class="svc-num">04</div>
+          <div class="svc-name">Braces &amp; Aligners</div>
+          <p class="svc-desc">Ceramic braces or clear aligners tailored to your lifestyle for a straighter smile.</p>
+        </div>
+      </div>
+
+      <div class="svc reveal d5">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&fit=crop" alt="Smile Makeover" class="svc-img"/>
+        <div class="svc-body">
+          <div class="svc-num">05</div>
+          <div class="svc-name">Smile Makeover</div>
+          <p class="svc-desc">A complete transformation combining veneers, bonding, and whitening for your dream smile.</p>
+        </div>
+      </div>
+
+      <div class="svc reveal d6">
+        <img src="https://images.unsplash.com/photo-1588776814546-ec1f74748e52?w=600&q=80&fit=crop" alt="Kids Dentistry" class="svc-img"/>
+        <div class="svc-body">
+          <div class="svc-num">06</div>
+          <div class="svc-name">Kids Dentistry</div>
+          <p class="svc-desc">Child-friendly dental care in a warm environment that makes little ones feel safe.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <!-- Image -->
+      <div class="about-img-col reveal">
+        <img
+          src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&q=85&fit=crop&crop=top"
+          alt="Dr. Vishal"
+          class="about-img-main"
+        />
+        <div class="about-badge">
+          <div class="about-badge-num">10+</div>
+          <div class="about-badge-label">Years of Excellence</div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal d2">
+        <div class="tag">About the Clinic</div>
+        <h2 class="h2">A Legacy of Smiles<br>in <em>Surat</em></h2>
+
+        <div class="doc-card">
+          <img
+            src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=200&q=80&fit=crop&crop=faces"
+            alt="Dr. Vishal"
+            class="doc-avatar"
+          />
+          <div>
+            <div class="doc-name">Dr. Vishal</div>
+            <div class="doc-role">BDS, MDS — Lead Dental Surgeon</div>
+          </div>
+        </div>
+
+        <p class="about-body">
+          My Dental Clinic has been transforming smiles in Surat for over a decade. Under the expert guidance of Dr. Vishal, we combine the latest dental technology with a compassionate, patient-first approach. Every visit is designed to be comfortable, efficient, and stress-free — whether it's a routine check-up or a complete smile makeover.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="feat-dot">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="feat-label">Experienced &amp; Qualified Team</div>
+              <div class="feat-sub">Dr. Vishal holds MDS with 10+ years of clinical practice</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-dot">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="feat-label">Modern Digital Equipment</div>
+              <div class="feat-sub">Digital X-rays, 3D scanning, CAD/CAM crowns, laser dentistry</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-dot">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="feat-label">Hygiene-First Environment</div>
+              <div class="feat-sub">Hospital-grade sterilisation and single-use instruments</div>
+            </div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-dot">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="feat-label">Transparent &amp; Affordable Pricing</div>
+              <div class="feat-sub">Clear treatment costs with flexible EMI payment options</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ WHY CHOOSE US ══════════════════ -->
+<section id="why">
+  <div class="wrap">
+    <div class="why-head cx reveal">
+      <div class="tag light">Why Choose Us</div>
+      <h2 class="h2 light">The My Dental Clinic <em style="color:rgba(255,255,255,.55)">Difference</em></h2>
+      <p class="sub light" style="margin:0 auto">We make every dental visit something you look forward to.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="why-title">Pain-Free Treatment</div>
+        <p class="why-text">Advanced sedation and numbing techniques ensure you feel only comfort throughout your procedure.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07M8.46 8.46a5 5 0 000 7.07"/></svg>
+        </div>
+        <div class="why-title">Latest Technology</div>
+        <p class="why-text">Digital X-rays, 3D imaging, laser dentistry, and CAD/CAM same-day crowns.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <div class="why-title">Affordable Pricing</div>
+        <p class="why-text">Honest, transparent fees. No hidden costs. Flexible EMI plans available for all treatments.</p>
+      </div>
+      <div class="why-card reveal d4">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="why-title">Quick Appointments</div>
+        <p class="why-text">No long waits. Book a slot online or via WhatsApp and be seen exactly on time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="test-head cx reveal">
+      <div class="tag">Patient Reviews</div>
+      <h2 class="h2">What Our Patients <em>Say</em></h2>
+      <p class="sub">Real experiences from real patients whose smiles we've transformed.</p>
+    </div>
+    <div class="test-grid">
+
+      <div class="tcard reveal d1">
+        <div class="tcard-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-text">"I was terrified of dentists my whole life — until I visited Dr. Vishal. The root canal was completely painless, the clinic is immaculate, and the staff treated me like family. I won't go anywhere else."</p>
+        <div class="tcard-foot">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80&fit=crop&crop=faces" alt="Riya Desai" class="tcard-av"/>
+          <div>
+            <div class="tcard-name">Riya Desai</div>
+            <div class="tcard-city">Adajan, Surat</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal d2">
+        <div class="tcard-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-text">"Got my dental implants done here — the results are incredible, looks completely natural. Dr. Vishal explained every step clearly and the pricing was very fair. Highly recommend!"</p>
+        <div class="tcard-foot">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80&fit=crop&crop=faces" alt="Amit Shah" class="tcard-av"/>
+          <div>
+            <div class="tcard-name">Amit Shah</div>
+            <div class="tcard-city">Vesu, Surat</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard reveal d3">
+        <div class="tcard-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-text">"Brought my 7-year-old and she actually loved the experience. The team was so patient and warm with her. We're now regulars and the whole family comes here for all our dental needs."</p>
+        <div class="tcard-foot">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&q=80&fit=crop&crop=faces" alt="Neha Patel" class="tcard-av"/>
+          <div>
+            <div class="tcard-name">Neha Patel</div>
+            <div class="tcard-city">Pal, Surat</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ APPOINTMENT ══════════════════ -->
+<section id="appointment">
+  <div class="wrap">
+    <div class="appt-grid">
+
+      <!-- Left -->
+      <div class="reveal">
+        <div class="tag light">Book a Visit</div>
+        <h2 class="h2 light">Ready for Your<br><em style="color:rgba(255,255,255,.55)">Best Smile?</em></h2>
+        <p class="sub light">Fill in the form and we'll confirm your slot on WhatsApp within minutes.</p>
+        <div class="appt-meta">
+          <div class="appt-row">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Monday – Saturday &nbsp;·&nbsp; 9:00 AM to 8:00 PM
+          </div>
+          <div class="appt-row">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            +91 98765 43210
+          </div>
+          <div class="appt-row">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ring Road, Surat, Gujarat 395007
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="appt-form-box reveal d2">
+        <div class="fld">
+          <label class="flabel">Your Full Name</label>
+          <input type="text" class="finput" placeholder="e.g. Rahul Sharma" id="fName"/>
+        </div>
+        <div class="fld">
+          <label class="flabel">Phone Number</label>
+          <input type="tel" class="finput" placeholder="e.g. 98765 43210" id="fPhone"/>
+        </div>
+        <div class="fld">
+          <label class="flabel">Treatment Needed</label>
+          <select class="finput" id="fService">
+            <option value="">Select a treatment...</option>
+            <option>Teeth Whitening</option>
+            <option>Dental Implants</option>
+            <option>Root Canal</option>
+            <option>Braces / Aligners</option>
+            <option>Smile Makeover</option>
+            <option>Kids Dentistry</option>
+            <option>General Check-up</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label class="flabel">Preferred Time</label>
+          <select class="finput" id="fTime">
+            <option value="">Choose a slot...</option>
+            <option>Morning (9 AM – 12 PM)</option>
+            <option>Afternoon (12 PM – 4 PM)</option>
+            <option>Evening (4 PM – 8 PM)</option>
+          </select>
+        </div>
+        <button class="btn-submit" onclick="sendWA()">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Book via WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-head cx reveal">
+      <div class="tag">Get In Touch</div>
+      <h2 class="h2">Find Us in <em>Surat</em></h2>
+      <p class="sub">We're on Ring Road — easy to reach from all parts of the city.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="info-cards">
+        <div class="icard reveal d1">
+          <div class="icard-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="icard-lbl">Address</div>
+            <div class="icard-val">Ring Road, Near City Centre Mall</div>
+            <div class="icard-sub">Surat, Gujarat 395007</div>
+          </div>
+        </div>
+        <div class="icard reveal d2">
+          <div class="icard-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="icard-lbl">Phone</div>
+            <div class="icard-val">+91 98765 43210</div>
+            <div class="icard-sub">Monday – Saturday · 9 AM to 8 PM</div>
+          </div>
+        </div>
+        <div class="icard reveal d3">
+          <div class="icard-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="icard-lbl">Email</div>
+            <div class="icard-val">hello@mydentalclinic.in</div>
+            <div class="icard-sub">We reply within a few hours</div>
+          </div>
+        </div>
+        <div class="icard reveal d4">
+          <div class="icard-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="icard-lbl">Hours</div>
+            <div class="icard-val">Monday – Saturday</div>
+            <div class="icard-sub">9:00 AM to 8:00 PM · Sunday Closed</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-box reveal d2">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59399.4!2d72.77482!3d21.1702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e510b3a7d0d%3A0x4e45a8ec4b3a0d73!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1234567890"
+          allowfullscreen="" loading="lazy" title="My Dental Clinic Location"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">
+          <div class="foot-logo-mark">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=80&q=80&fit=crop" alt="My Dental Clinic">
+          </div>
+          <div class="foot-logo-name">My Dental Clinic</div>
+        </div>
+        <p class="foot-tagline">Advanced dental care for the entire family, led by Dr. Vishal in Surat, Gujarat.</p>
+      </div>
+      <div>
+        <div class="foot-col-title">Navigation</div>
+        <ul class="foot-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Dr. Vishal</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-col-title">Treatments</div>
+        <ul class="foot-links">
+          <li><a href="#appointment">Teeth Whitening</a></li>
+          <li><a href="#appointment">Dental Implants</a></li>
+          <li><a href="#appointment">Root Canal</a></li>
+          <li><a href="#appointment">Braces &amp; Aligners</a></li>
+          <li><a href="#appointment">Smile Makeover</a></li>
+          <li><a href="#appointment">Kids Dentistry</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2024 My Dental Clinic · Dr. Vishal · Surat, Gujarat</span>
+      <span>All rights reserved</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════ FLOATING WA ══════════════════ -->
+<a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20dental%20appointment" target="_blank" id="wa-float" aria-label="WhatsApp">
+  <div class="wa-ring"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ══════════════════ JAVASCRIPT ══════════════════ -->
+<script>
+  // Navbar scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 28));
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+  els.forEach(el => obs.observe(el));
+
+  // WhatsApp form
+  function sendWA() {
+    const n = document.getElementById('fName').value.trim() || 'Patient';
+    const p = document.getElementById('fPhone').value.trim() || 'Not provided';
+    const s = document.getElementById('fService').value || 'General check-up';
+    const t = document.getElementById('fTime').value || 'Flexible';
+    const msg = encodeURIComponent(
+      `Hi Dr. Vishal, I'd like to book an appointment at My Dental Clinic.\n\n` +
+      `Name: ${n}\nPhone: ${p}\nTreatment: ${s}\nPreferred Time: ${t}\n\nPlease confirm. Thank you!`
+    );
+    window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
